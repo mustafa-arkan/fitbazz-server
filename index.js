@@ -29,7 +29,7 @@ async function run(){
   try{
 
 const serviceCollection=client.db('fitBazz').collection('services')
-const addCollection=client.db('fitbazz').collection('add')
+const addCollection=client.db('fitBazz').collection('add')
 
 app.get('/services',async(req,res)=>{
   const query={}
@@ -39,6 +39,33 @@ app.get('/services',async(req,res)=>{
   })
 
 
+//add service api
+
+app.get('/addNewService',async(req,res)=>{
+
+  let query={}
+
+if(req.query.email){
+
+query={
+
+email:req.query.email
+
+
+}
+
+
+}
+
+
+
+  const cursor= addCollection.find(query)
+  const newadd=await cursor.toArray()
+  res.send(newadd)
+  })
+
+
+
 
 
 
@@ -46,12 +73,12 @@ app.get('/services',async(req,res)=>{
 
   app.post('/addNewService', async (req, res) => {
 
-const order=req.body
 
-    const result = await addCollection.insertOne(order);
-    res.json(result);
+    const result = await addCollection.insertOne(req.body);
+
+
+    res.send(result);
 })
-
 
 
 
