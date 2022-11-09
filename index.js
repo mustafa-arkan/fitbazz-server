@@ -29,6 +29,7 @@ async function run(){
   try{
 
 const serviceCollection=client.db('fitBazz').collection('services')
+const addCollection=client.db('fitbazz').collection('add')
 
 app.get('/services',async(req,res)=>{
   const query={}
@@ -38,6 +39,18 @@ app.get('/services',async(req,res)=>{
   })
 
 
+
+
+
+
+
+  app.post('/addNewService', async (req, res) => {
+
+const order=req.body
+
+    const result = await addCollection.insertOne(order);
+    res.json(result);
+})
 
 
 
