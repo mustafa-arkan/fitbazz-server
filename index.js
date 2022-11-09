@@ -43,19 +43,19 @@ app.get('/services',async(req,res)=>{
 
 app.get('/addNewService',async(req,res)=>{
 
-  let query={}
+let  query={}
 
-if(req.query.email){
+//if(req.query.email){
 
-query={
+//query={
 
-email:req.query.email
-
-
-}
+//email:req.query.email
 
 
-}
+//}
+
+
+//}
 
 
 
