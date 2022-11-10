@@ -30,6 +30,7 @@ async function run(){
 
 const serviceCollection=client.db('fitBazz').collection('services')
 const addCollection=client.db('fitBazz').collection('add')
+const orderCollection=client.db('fitBazz').collection('orders')
 
 app.get('/services',async(req,res)=>{
   const query={}
@@ -94,6 +95,24 @@ let  query={}
 
     res.send(result);
 })
+
+//review api
+
+app.post('/orders',async(req,res)=>{
+
+  const order=req.body 
+  
+  const review=await orderCollection.insertOne(order)
+  res.send(review)
+  
+  
+  })
+
+
+
+
+
+
 
 
 
