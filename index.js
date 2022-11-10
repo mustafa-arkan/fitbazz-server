@@ -32,6 +32,8 @@ const serviceCollection=client.db('fitBazz').collection('services')
 const addCollection=client.db('fitBazz').collection('add')
 const orderCollection=client.db('fitBazz').collection('orders')
 
+//const reviewCollection=client.db('fitBazz').collection('reviews')
+
 app.get('/services',async(req,res)=>{
   const query={}
   const cursor=serviceCollection.find(query)
@@ -123,11 +125,31 @@ app.delete('/orders/:id', async (req, res) => {
   res.send(result);
 })
 
+//review all start api
+
+// app.get('/reviews', async (req, res) => {
+//   let query = {};
+
+
+//   const cursor = reviewCollection.find(query);
+//   const orders = await cursor.toArray();
+//   res.send(orders);
+// });
+
+// app.delete('/reviews/:id', async (req, res) => {
+//   const id = req.params.id;
+//   const query = { _id: ObjectId(id) };
+//   const result = await reviewCollection.deleteOne(query);
+//   res.send(result);
+// })
 
 
 
 
 
+
+
+//review all end api
 
 
 
