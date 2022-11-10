@@ -10,9 +10,7 @@ app.use(express.json())
 
 ////////////////////////
 
-//fitbazzDBUser
-//t5y3yQTfBRgBm8EY
-//t5y3yQTfBRgBm8EY
+
 
 // console.log(process.env.DB_USER)
 // console.log(process.env.DB_PASS)
@@ -34,6 +32,10 @@ const orderCollection=client.db('fitBazz').collection('orders')
 
 //const reviewCollection=client.db('fitBazz').collection('reviews')
 
+
+
+///service for limit home
+
 app.get('/services',async(req,res)=>{
   const query={}
   const cursor=serviceCollection.find(query)
@@ -50,10 +52,31 @@ app.get('/services',async(req,res)=>{
     res.send(service)
     
     })
+////////service limit end
+
+
+///////service without limit
+
+app.get('/offers',async(req,res)=>{
+  const query={}
+  const cursor=serviceCollection.find(query)
+  const services=await cursor.toArray()
+  res.send(services)
+  })
+
+  app.get('/offers/:id', async(req,res)=>{
+
+    const id=req.params.id 
+    const query={_id: ObjectId(id)}
+    
+    const service=await serviceCollection.findOne(query)
+    res.send(service)
+    
+    })
 
 
 
-
+///service without limit end
 
 
 
