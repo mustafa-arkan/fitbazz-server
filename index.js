@@ -98,6 +98,39 @@ let  query={}
 
 //review api
 
+
+app.get('/orders', async (req, res) => {
+  let query = {};
+
+  if (req.query.email) {
+      query = {
+          email: req.query.email
+      }
+  }
+
+  const cursor = orderCollection.find(query);
+  const orders = await cursor.toArray();
+  res.send(orders);
+});
+
+//review delete
+
+
+app.delete('/orders/:id', async (req, res) => {
+  const id = req.params.id;
+  const query = { _id: ObjectId(id) };
+  const result = await orderCollection.deleteOne(query);
+  res.send(result);
+})
+
+
+
+
+
+
+
+
+
 app.post('/orders',async(req,res)=>{
 
   const order=req.body 
