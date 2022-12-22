@@ -55,7 +55,7 @@ app.get('/services',async(req,res)=>{
 ////////service limit end
 
 
-///////service without limit
+///
 
 app.get('/offers',async(req,res)=>{
   const query={}
@@ -214,7 +214,7 @@ run().catch(err=>console.error(err))
 
 
 
-// ////////////////////
+// 
 app.get('/',(req,res)=>{
 
 res.send('Fitbazz server running.')
